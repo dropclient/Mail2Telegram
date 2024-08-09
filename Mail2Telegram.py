@@ -7,7 +7,7 @@ class ExampleHandler:
    
     async def handle_DATA(self, server, session, envelope):
         decodedMail=envelope.content.decode('utf8', errors='replace')
-        telegramRequest = 'https://api.telegram.org/bot' + os.environ.get("BOT_TOKEN")  + '/sendMessage?chat_id=' + os.environ.get("CHAT_ID") + '&text=' +str(decodedMail) 
+        telegramRequest = 'https://api.telegram.org/bot' + os.environ.get("BOT_TOKEN")  + '/sendMessage?chat_id=' + os.environ.get("CHAT_ID") + '&message_thread_id=' + os.environ.get("THREAD_ID") + '&text=' +str(decodedMail) 
         response = requests.post(telegramRequest)
         
         print("\nDecoded Mail:\n" + str(decodedMail))
